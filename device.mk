@@ -23,3 +23,8 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
+# Android Open Source Project Common Stuff
+PRODUCT_PACKAGES += \
+    	charger_res_images \
+    	charger
+
