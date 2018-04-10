@@ -23,6 +23,11 @@
 # *not* include it on all devices, so it is safe even with hardware-specific
 # components.
 
+VENDOR_PATH := device/huawei/prague
+
+TARGET_RECOVERY_DEVICE_DIRS := \
+    $(VENDOR_PATH) \
+
 # Arch
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
@@ -44,6 +49,7 @@ TARGET_NO_BOOTLOADER := true
 
 # File System
 BOARD_FLASH_BLOCK_SIZE := 131072
+BOARD_SUPPRESS_SECURE_ERASE := true
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
@@ -54,3 +60,17 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_KERNEL_CMDLINE := loglevel=4 coherent_pool=512K page_tracker=on slub_min_objects=12 androidboot.selinux=permissive
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x07b88000 --tags_offset 0x07588000
 
+TARGET_PREBUILT_KERNEL := device/huawei/prague/Image
+
+# Recovery
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+RECOVERY_SDCARD_ON_DATA := true
+RECOVERY_VARIANT := twrp
+TARGET_RECOVERY_FSTAB := $(VENDOR_PATH)/recovery.fstab
+TW_THEME := portrait_hdpi
+TW_BRIGHTNESS_PATH := /sys/class/leds/lcd_backlight0/brightness
+TW_CUSTOM_BATTERY_PATH := /sys/class/power_supply/Battery
+TW_DEVICE_VERSION := 0
+TW_EXCLUDE_SUPERSU := true
+TW_INCLUDE_CRYPTO := true
+TW_INCLUDE_NTFS_3G := true
