@@ -43,14 +43,10 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 
 # Kernel
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/huawei/prague/Image
+LOCAL_KERNEL := device/huawei/prague/dummykernel
 else
 LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
-
-# Recovery
-PRODUCT_COPY_FILES += \
-    	bionic/libc/zoneinfo/tzdata:root/system/usr/share/zoneinfo/tzdata

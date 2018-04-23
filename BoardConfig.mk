@@ -55,14 +55,15 @@ TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 
 # Kernel
-BOARD_KERNEL_BASE := 0x00478000
+BOARD_KERNEL_CMDLINE := 
+BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_CMDLINE := loglevel=4 coherent_pool=512K page_tracker=on slub_min_objects=12 androidboot.selinux=permissive
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x07b88000 --tags_offset 0x07588000
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x8000 --ramdisk_offset 0x01000000 --tags_offset 0x0100
 
-TARGET_PREBUILT_KERNEL := device/huawei/prague/Image
+TARGET_PREBUILT_KERNEL := device/huawei/prague/dummykernel
 
 # Recovery
+BOARD_CUSTOM_BOOTIMG_MK := device/huawei/prague/custombootimg.mk
 RECOVERY_GRAPHICS_USE_LINELENGTH := true
 RECOVERY_SDCARD_ON_DATA := true
 RECOVERY_VARIANT := twrp
@@ -71,6 +72,9 @@ TW_THEME := portrait_hdpi
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd_backlight0/brightness
 TW_CUSTOM_BATTERY_PATH := /sys/class/power_supply/Battery
 TW_DEVICE_VERSION := 0
+TW_EXCLUDE_DEFAULT_USB_INIT := true
+TW_EXCLUDE_MTP := false
 TW_EXCLUDE_SUPERSU := true
 TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_NTFS_3G := true
+
